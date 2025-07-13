@@ -12,15 +12,22 @@ import (
 //go:embed defaultConfig.json
 var defaultConfig []byte
 
+// Holds info for a defined "color"
 type Color struct {
 	Hex string `json:"hex"`
 	RGB string `json:"rgb"`
 	HSL string `json:"hsl"`
 }
 
+// Holds info about a config that needs to be updated
+type ConfigFile struct {
+	Paths []string `json:"path"`
+	Restart string `json:"restart,omitempty"`
+}
+
 type Config struct {
 	Colors      map[string]Color `json:"colors"`
-	ConfigFiles []string         `json:"configFiles"`
+	ConfigFiles []ConfigFile         `json:"configFiles"`
 }
 
 // expandPath expands a path that starts with "~/" into the full absolute path
