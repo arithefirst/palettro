@@ -1,21 +1,21 @@
-# Palettro
+# Palettro 🎨
 
 A command-line utility for changing the primary accent color in your desktop rice (customized Linux desktop setup). Palettro allows you to quickly switch between different accent colors across all your configured applications with a single command.
 
-## Features
+## Features ✨
 
-- **Quick Color Switching**: Change your primary accent color across your entire rice instantly
-- **Multi-Application Support**: Update colors in multiple config files simultaneously
-- **Service Management**: Automatically restart applications after color changes
-- **Predefined Palette**: Ships with a beautiful Catppuccin color selection
-- **Template System**: Uses template files to apply colors to your configurations
+- **Quick Color Switching** ⚡: Change your primary accent color across your entire rice instantly
+- **Multi-Application Support** 🔄: Update colors in multiple config files simultaneously
+- **Service Management** 🛠️: Automatically restart applications after color changes
+- **Predefined Palette** 🎭: Ships with a beautiful Catppuccin color selection
+- **Template System** 📝: Uses template files to apply colors to your configurations
 
-## Installation
+## Installation 📦
 
 ### Prerequisites
 
 - Go 1.24.5 or later
-- Linux operating system
+- Linux operating system 🐧
 
 ### Build from Source
 
@@ -26,7 +26,7 @@ go build -o palettro
 sudo mv palettro /usr/local/bin/
 ```
 
-## Usage
+## Usage 🚀
 
 ### Basic Usage
 
@@ -44,7 +44,7 @@ palettro -showconfigs
 palettro -config /path/to/custom/config.json -color red
 ```
 
-### Command Line Options
+### Command Line Options 🎛️
 
 | Flag | Description | Default |
 |------|-------------|---------|
@@ -53,7 +53,7 @@ palettro -config /path/to/custom/config.json -color red
 | `-showcolors` | Display all available color names | `false` |
 | `-showconfigs` | Show all registered application configs | `false` |
 
-### Configuration File
+### Configuration File ⚙️
 
 Palettro uses a JSON configuration file located at `~/.config/palettro/config.json`. If this file doesn't exist, it will be created automatically with default settings.
 
@@ -84,26 +84,26 @@ Palettro uses a JSON configuration file located at `~/.config/palettro/config.js
 }
 ```
 
-#### Default Colors
+#### Default Colors 🌈
 
 Palettro ships with the following color palette:
 
-- `rosewater` - #f5e0dc
-- `flamingo` - #f2cdcd
-- `pink` - #f5c2e7
-- `mauve` - #cba6f7
-- `red` - #f38ba8
-- `maroon` - #eba0ac
-- `peach` - #fab387
-- `yellow` - #f9e2af
-- `green` - #a6e3a1
-- `teal` - #94e2d5
-- `sky` - #89dceb
-- `sapphire` - #74c7ec
-- `blue` - #89b4fa
-- `lavender` - #b4befe
+- `rosewater` - #f5e0dc 🌸
+- `flamingo` - #f2cdcd 🦩
+- `pink` - #f5c2e7 💖
+- `mauve` - #cba6f7 🟣
+- `red` - #f38ba8 🔴
+- `maroon` - #eba0ac 🍷
+- `peach` - #fab387 🍑
+- `yellow` - #f9e2af 💛
+- `green` - #a6e3a1 💚
+- `teal` - #94e2d5 🐢
+- `sky` - #89dceb ☁️
+- `sapphire` - #74c7ec 💎
+- `blue` - #89b4fa 🔵
+- `lavender` - #b4befe 🪻
 
-#### Adding Applications
+#### Adding Applications 🔧
 
 To add support for a new application:
 
@@ -121,7 +121,7 @@ To add support for a new application:
 }
 ```
 
-## Examples
+## Examples 💡
 
 ### Switching Themes
 
@@ -143,11 +143,11 @@ palettro -showcolors
 palettro -showconfigs
 ```
 
-## Contributing
+## Contributing 🤝
 
 We welcome contributions to palettro! This project is licensed under the GNU GPL 3.0.
 
-### Development Setup
+### Development Setup 🛠️
 
 1. Fork the repository
 2. Clone your fork:
@@ -169,14 +169,14 @@ We welcome contributions to palettro! This project is licensed under the GNU GPL
 6. Commit and push your changes
 7. Create a pull request
 
-### Contribution Guidelines
+### Contribution Guidelines 📋
 
 1. **Code Style**: Follow standard Go formatting (`go fmt`)
 2. **Documentation**: Update documentation for new features
 3. **Error Handling**: Use appropriate error handling patterns
 4. **Commit Messages**: Use descriptive commit messages with the Conventional Commits standard
    
-### Reporting Issues
+### Reporting Issues 🐛
 
 Please report bugs and feature requests through GitHub Issues. Include:
 
@@ -186,11 +186,11 @@ Please report bugs and feature requests through GitHub Issues. Include:
 - Expected vs actual behavior
 - Relevant configuration files
 
-## License
+## License 📄
 
 This project is licensed under the GNU General Public License v3.0. See the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
+## Acknowledgments 🙏
 
 - Default color palette robbed from [Catppuccin](https://github.com/catppuccin/catppuccin) Mocha
 - Built with Go's standard library and embedded resources
