@@ -14,9 +14,11 @@ var defaultConfig []byte
 
 // Holds info for a defined "color"
 type Color struct {
-	Hex string `json:"hex"`
-	RGB string `json:"rgb"`
-	HSL string `json:"hsl"`
+	Hex      string `json:"hex"`
+	RGB      string `json:"rgb"`
+	HSL      string `json:"hsl"`
+	RGBA     string `json:"rgba"`
+	HexTrans string `json:"hexTrans"`
 }
 
 // Holds info about a config that needs to be updated

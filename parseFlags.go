@@ -7,6 +7,7 @@ type Flags struct {
 	Color       string
 	ShowColors  bool
 	ShowConfigs bool
+	Autoconfirm bool
 }
 
 func parseFlags() Flags {
@@ -17,6 +18,7 @@ func parseFlags() Flags {
 	color := flag.String("color", "N/A", "New accent color to use for your RICE")
 	showColors := flag.Bool("showcolors", false, "Show the names of all colors registered in the config")
 	showConfigs := flag.Bool("showconfigs", false, "Show all the names and details of registered configs")
+	autoconfirm := flag.Bool("autoconfirm", false, "Skip warning about file overwrites")
 
 	flag.Parse()
 
@@ -25,6 +27,7 @@ func parseFlags() Flags {
 	returnFlags.Color = *color
 	returnFlags.ShowColors = *showColors
 	returnFlags.ShowConfigs = *showConfigs
+	returnFlags.Autoconfirm = *autoconfirm
 
 	return returnFlags
 }

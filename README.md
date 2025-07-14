@@ -113,9 +113,11 @@ To add support for a new application:
 4. Use color variables in your templates that palettro can replace
 
 **Template Variables:**
-- `((PALETTRO.HEX))` - Hexadecimal format (e.g., `#89b4fa`)
-- `((PALETTRO.RGB))` - RGB format (e.g., `rgb(137, 180, 250)`)
-- `((PALETTRO.HSL))` - HSL format (e.g., `hsl(217deg, 92%, 76%)`)
+- `((PALETTRO.HEX))` - Hexadecimal format (e.g., `89b4fa`)
+- `((PALETTRO.HEXTRANS))` - Hexadecimal format with transparency value (e.g., `89b4faff`)
+- `((PALETTRO.RGB))` - RGB format (e.g., `137, 180, 250`)
+- - `((PALETTRO.RGBA))` - RGBA format (e.g., `242, 205, 205, 1`)
+- `((PALETTRO.HSL))` - HSL format (e.g., `217deg, 92%, 76%`)
 
 **Example:**
 

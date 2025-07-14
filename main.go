@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"log"
 	"os"
@@ -9,6 +10,16 @@ import (
 	"strings"
 	"syscall"
 )
+
+func fileExists(filePath string) bool {
+	_, err := os.Stat(filePath) // Attempt to get file information
+	if err != nil {
+		// If an error occurred, check if it indicates the file doesn't exist
+		return !errors.Is(err, os.ErrNotExist)
+	}
+	// If no error, the file exists
+	return true
+}
 
 func main() {
 	flags := parseFlags()
@@ -59,13 +70,30 @@ func main() {
 			}
 
 			var fileStr string
-
 			fileStr = strings.ReplaceAll(string(file), "((PALETTRO.HEX))", color.Hex)
 			fileStr = strings.ReplaceAll(fileStr, "((PALETTRO.HSL))", color.HSL)
 			fileStr = strings.ReplaceAll(fileStr, "((PALETTRO.RGB))", color.RGB)
+			fileStr = strings.ReplaceAll(fileStr, "((PALETTRO.RGBA))", color.RGBA)
+			fileStr = strings.ReplaceAll(fileStr, "((PALETTRO.HEXTRANS))", color.HexTrans)
 
-			fmt.Println(fileStr)
-			fmt.Printf("New path: %s\n", expandPath(filepath.Join(v.Path, f.Name())))
+			newFilePath := expandPath(filepath.Join(v.Path, f.Name()))
+
+			if fileExists(newFilePath) && !flags.Autoconfirm {
+				fmt.Printf("Warning: File '%s' already exists! Continuing will overwrite it. Continue? [y/N]: ", filePath)
+
+				var response string
+				fmt.Scan(&response)
+
+				response = strings.ToLower(strings.TrimSpace(response))
+				if !(response == "y" || response == "yes") {
+					os.Exit(1)
+				}
+			}
+
+			err = os.WriteFile(newFilePath, []byte(fileStr), 0644)
+			if err != nil {
+				log.Fatalf("Failed to write file '%s': %v", newFilePath, err)
+			}
 		}
 
 		if v.Restart != "" {
@@ -85,7 +113,4 @@ func main() {
 			}
 		}
 	}
-
-	// To-Do:
-	// - Add main functionality of writing configs to the correct folders in the system
 }
