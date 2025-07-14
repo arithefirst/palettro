@@ -6,6 +6,7 @@ type Flags struct {
 	ConfigPath string
 	Color string
 	ShowColors bool
+	ShowConfigs bool
 }
 
 func parseFlags() Flags {
@@ -15,6 +16,7 @@ func parseFlags() Flags {
 	configPath := flag.String("config", "~/.config/palettro/config.json", "Sets the path to the config file")
 	color := flag.String("color", "N/A", "New accent color to use for your RICE")
 	showColors := flag.Bool("showcolors", false, "Show the names of all colors registered in the config")
+	showConfigs := flag.Bool("showconfigs", false, "Show all the names and details of registered configs")
 
 	flag.Parse()
 	
@@ -22,6 +24,7 @@ func parseFlags() Flags {
 	returnFlags.ConfigPath = *configPath
 	returnFlags.Color = *color
 	returnFlags.ShowColors = *showColors
+	returnFlags.ShowConfigs = *showConfigs
 
 	return returnFlags
 }

@@ -71,5 +71,11 @@
       "hsl": "hsl(232deg, 97%, 85%)"
     }
   },
-  "configFiles": {}
+  "configs": [
+      {
+      "name": "waybar",
+      "path": "~/.config/waybar/",
+      "restart": "waybar"
+    }
+  ]
 }

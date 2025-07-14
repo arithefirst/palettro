@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -17,7 +18,22 @@ func main() {
 			os.Exit(0)
 		}
 
-		color, colorExists := config.Colors[flags.Color]
+		if flags.ShowConfigs {
+			fmt.Println("All Configs:")
+			for _,v := range config.ConfigFiles {
+				fmt.Println("----------------")
+				fmt.Printf("Name: %s\n", v.Name)
+				fmt.Printf("Location (palettro): ~/.config/palettro/%s\n", strings.ToLower(v.Name))
+				fmt.Printf("Location: %s\n", v.Path)
+				fmt.Printf("Restart service on color change: %t\n", v.Restart != "")
+				if v.Restart != "" {
+					fmt.Printf("Service to kill on color change: %v\n", v.Restart)
+				}
+			}
+			os.Exit(0)
+		}
+
+		_, colorExists := config.Colors[flags.Color]
 
 		if flags.Color == "N/A" {
 			log.Fatalln("The \"-color\" flag must be set.")
@@ -30,6 +46,4 @@ func main() {
 		// it gets mapped to ~/.config/palettro/waybar/)
 		// - Add main functionality of writing configs to the correct folders in the system
 		// - Add functionality of service restarting for services that don't auto-update configs
-
-		fmt.Println(color)
 }

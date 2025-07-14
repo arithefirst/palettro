@@ -20,14 +20,15 @@ type Color struct {
 }
 
 // Holds info about a config that needs to be updated
-type ConfigFile struct {
-	Paths   string `json:"path"`
+type ServiceConfig struct {
+	Path   string `json:"path"`
 	Restart string `json:"restart,omitempty"`
+	Name string `json:"name"`
 }
 
 type Config struct {
 	Colors      map[string]Color `json:"colors"`
-	ConfigFiles []ConfigFile     `json:"configFiles"`
+	ConfigFiles []ServiceConfig     `json:"configs"`
 }
 
 // expandPath expands a path that starts with "~/" into the full absolute path
