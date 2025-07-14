@@ -72,10 +72,14 @@
     }
   },
   "configs": [
-      {
+    {
       "name": "waybar",
       "path": "~/.config/waybar/",
       "restart": "waybar"
+    },
+    {
+      "name": "hyprland",
+      "path": "~/.config/hypr/"
     }
   ]
 }
