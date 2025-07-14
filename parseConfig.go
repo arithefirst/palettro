@@ -21,14 +21,14 @@ type Color struct {
 
 // Holds info about a config that needs to be updated
 type ServiceConfig struct {
-	Path   string `json:"path"`
+	Path    string `json:"path"`
 	Restart string `json:"restart,omitempty"`
-	Name string `json:"name"`
+	Name    string `json:"name"`
 }
 
 type Config struct {
 	Colors      map[string]Color `json:"colors"`
-	ConfigFiles []ServiceConfig     `json:"configs"`
+	ConfigFiles []ServiceConfig  `json:"configs"`
 }
 
 // expandPath expands a path that starts with "~/" into the full absolute path
@@ -78,8 +78,8 @@ func parseConfig(flags Flags) Config {
 		}
 	}
 
-	for _,v := range parsedConfig.ConfigFiles {
-		os.MkdirAll(expandPath("~/.config/palettro/" + strings.ToLower(v.Name)), 0755)
+	for _, v := range parsedConfig.ConfigFiles {
+		os.MkdirAll(expandPath("~/.config/palettro/"+strings.ToLower(v.Name)), 0755)
 	}
 
 	return parsedConfig
