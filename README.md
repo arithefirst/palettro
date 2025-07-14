@@ -1,5 +1,9 @@
 # Palettro 🎨
 
+
+https://github.com/user-attachments/assets/dba00b0b-1997-43d2-ab5d-948f1b34971b
+
+
 A command-line utility for changing the primary accent color in your desktop rice (customized Linux desktop setup). Palettro allows you to quickly switch between different accent colors across all your configured applications with a single command.
 
 ## Features ✨
