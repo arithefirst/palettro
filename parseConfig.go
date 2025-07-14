@@ -21,13 +21,13 @@ type Color struct {
 
 // Holds info about a config that needs to be updated
 type ConfigFile struct {
-	Paths []string `json:"path"`
+	Paths   string `json:"path"`
 	Restart string `json:"restart,omitempty"`
 }
 
 type Config struct {
 	Colors      map[string]Color `json:"colors"`
-	ConfigFiles []ConfigFile         `json:"configFiles"`
+	ConfigFiles []ConfigFile     `json:"configFiles"`
 }
 
 // expandPath expands a path that starts with "~/" into the full absolute path
@@ -68,6 +68,13 @@ func parseConfig(flags Flags) Config {
 	var parsedConfig Config
 	if err := json.Unmarshal(config, &parsedConfig); err != nil {
 		log.Fatalf("Unable to parse config file: %v\n", err)
+	}
+
+	// Validate that all color names are lowercase
+	for key := range parsedConfig.Colors {
+		if key != strings.ToLower(key) {
+			log.Fatalf("Config error: Color name '%s' must be lowercase", key)
+		}
 	}
 
 	return parsedConfig

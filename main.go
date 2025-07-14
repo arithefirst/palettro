@@ -3,11 +3,19 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
 )
 
 func main() {
 	  flags := parseFlags()
 		config := parseConfig(flags)
+
+		if flags.ShowColors {
+			for i := range config.Colors {
+				fmt.Println(i)
+			}
+			os.Exit(0)
+		}
 
 		color, colorExists := config.Colors[flags.Color]
 
@@ -22,7 +30,6 @@ func main() {
 		// it gets mapped to ~/.config/palettro/waybar/)
 		// - Add main functionality of writing configs to the correct folders in the system
 		// - Add functionality of service restarting for services that don't auto-update configs
-		// - Add export for all colors for stuff like rofi
 
 		fmt.Println(color)
 }
