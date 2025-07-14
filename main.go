@@ -42,8 +42,6 @@ func main() {
 		}
 
 		// To-Do: 
-		// - Read config files for each config setting in the config.json (EX: if config name is waybar, 
-		// it gets mapped to ~/.config/palettro/waybar/)
 		// - Add main functionality of writing configs to the correct folders in the system
 		// - Add functionality of service restarting for services that don't auto-update configs
 }

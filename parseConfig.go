@@ -78,5 +78,9 @@ func parseConfig(flags Flags) Config {
 		}
 	}
 
+	for _,v := range parsedConfig.ConfigFiles {
+		os.MkdirAll(expandPath("~/.config/palettro/" + strings.ToLower(v.Name)), 0755)
+	}
+
 	return parsedConfig
 }
