@@ -108,8 +108,14 @@ Palettro ships with the following color palette:
 To add support for a new application:
 
 1. Add an entry to the `configs` array in your configuration file
-2. Create template files in `~/.config/palettro/[app-name]/`
-3. Use color variables in your templates that palettro can replace
+2. Run `palettro -showconfigs` to verify it was properly added and create the nessecary file structure
+3. Create template files in `~/.config/palettro/[app-name]/`
+4. Use color variables in your templates that palettro can replace
+
+**Template Variables:**
+- `((PALETTRO.HEX))` - Hexadecimal format (e.g., `#89b4fa`)
+- `((PALETTRO.RGB))` - RGB format (e.g., `rgb(137, 180, 250)`)
+- `((PALETTRO.HSL))` - HSL format (e.g., `hsl(217deg, 92%, 76%)`)
 
 **Example:**
 
@@ -119,6 +125,9 @@ To add support for a new application:
   "path": "~/.config/waybar/",
   "restart": "waybar"
 }
+```
+
+When you run `palettro -color blue`, it reads template files from `~/.config/palettro/waybar/`, replaces the color variables with blue's values, and writes the processed files to `~/.config/waybar/`.
 ```
 
 ## Examples 💡

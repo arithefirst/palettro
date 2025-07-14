@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"strings"
 	"syscall"
 )
@@ -35,7 +36,7 @@ func main() {
 		os.Exit(0)
 	}
 
-	_, colorExists := config.Colors[flags.Color]
+	color, colorExists := config.Colors[flags.Color]
 
 	if flags.Color == "N/A" {
 		log.Fatalln("The \"-color\" flag must be set.")
@@ -48,6 +49,23 @@ func main() {
 		dir, err := os.ReadDir(path)
 		if err != nil {
 			log.Fatalf("[ENOENT]: Unable to read directory at %v\n", path)
+		}
+
+		for _, f := range dir {
+			filePath := filepath.Join(path, f.Name())
+			file, err := os.ReadFile(filePath)
+			if err != nil {
+				log.Fatalf("[ENOENT]: Unable to read file at \"%s\"\n", filePath)
+			}
+
+			var fileStr string
+
+			fileStr = strings.ReplaceAll(string(file), "((PALETTRO.HEX))", color.Hex)
+			fileStr = strings.ReplaceAll(fileStr, "((PALETTRO.HSL))", color.HSL)
+			fileStr = strings.ReplaceAll(fileStr, "((PALETTRO.RGB))", color.RGB)
+
+			fmt.Println(fileStr)
+			fmt.Printf("New path: %s\n", expandPath(filepath.Join(v.Path, f.Name())))
 		}
 
 		if v.Restart != "" {
@@ -66,8 +84,6 @@ func main() {
 				log.Printf("Warning: Failed to restart process %s: %v", v.Restart, err)
 			}
 		}
-
-		fmt.Println(dir)
 	}
 
 	// To-Do:
