@@ -18,10 +18,25 @@ A command-line utility for changing the primary accent color in your desktop ric
 
 ### Prerequisites
 
-- Go 1.24.5 or later
 - Linux operating system 🐧
 
-### Build from Source
+### Pull from the AUR (Archlinux Only)
+```bash
+yay -S palettro-bin 
+# or
+paru -S palettro-bin 
+```
+
+### Download from Releases
+```bash
+wget https://github.com/arithefirst/palettro/releases/download/v1.0.0/palettro-linux-x86_64 -O palettro
+# Optional sha256sum check
+echo "41cf04b6ac6418ae489e623d328b270f72c1ebf3fa0beff0aaa3585f00c18067  palettro" | sha256sum --check
+chmod +x ./palettro
+sudo mv palettro /usr/local/bin/
+```
+
+### Build from Source (requires Go 1.24.5 or later)
 
 ```bash
 git clone https://github.com/arithefirst/palettro
