@@ -135,7 +135,7 @@ To add support for a new application:
 - `((PALETTRO.HEX))` - Hexadecimal format (e.g., `89b4fa`)
 - `((PALETTRO.HEXTRANS))` - Hexadecimal format with transparency value (e.g., `89b4faff`)
 - `((PALETTRO.RGB))` - RGB format (e.g., `137, 180, 250`)
-- - `((PALETTRO.RGBA))` - RGBA format (e.g., `242, 205, 205, 1`)
+- `((PALETTRO.RGBA))` - RGBA format (e.g., `242, 205, 205, 1`)
 - `((PALETTRO.HSL))` - HSL format (e.g., `217deg, 92%, 76%`)
 
 **Example:**
